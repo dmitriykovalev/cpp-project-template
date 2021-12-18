@@ -1,0 +1,94 @@
+{
+  "version": 3,
+  "cmakeMinimumRequired": {
+    "major": 3,
+    "minor": 21,
+    "patch": 0
+  },
+  "configurePresets": [
+    {
+      "name": "debug",
+      "hidden": true,
+      "cacheVariables": {
+        "BUILD_SHARED_LIBS": "OFF",
+        "CMAKE_BUILD_TYPE": "Debug",
+        "RUNTIME_SANITIZERS": "address,undefined",
+        "BUILD_BENCHMARKS": "OFF"
+      }
+    },
+
+    {
+      "name": "debug-make",
+      "displayName": "Debug Config (Unix Makefiles)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/debug-make",
+      "inherits": "debug"
+    },
+    {
+      "name": "debug-ninja",
+      "displayName": "Debug Config (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/debug-ninja",
+      "inherits": "debug"
+    },
+    {
+      "name": "release",
+      "hidden": true,
+      "cacheVariables": {
+        "BUILD_SHARED_LIBS": "OFF",
+        "CMAKE_BUILD_TYPE": "Release",
+        "BUILD_BENCHMARKS": "ON"
+      }
+    },
+    {
+      "name": "release-make",
+      "displayName": "Release Config (Unix Makefiles)",
+      "generator": "Unix Makefiles",
+      "binaryDir": "${sourceDir}/build/release-make",
+      "inherits": "release"
+    },
+    {
+      "name": "release-ninja",
+      "displayName": "Release Config (Ninja)",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build/release-ninja",
+      "inherits": "release"
+    }
+  ],
+  "buildPresets": [
+    {
+      "name": "debug-make",
+      "configurePreset": "debug-make"
+    },
+    {
+      "name": "debug-ninja",
+      "configurePreset": "debug-ninja"
+    },
+    {
+      "name": "release-make",
+      "configurePreset": "release-make"
+    },
+    {
+      "name": "release-ninja",
+      "configurePreset": "release-ninja"
+    }
+  ],
+  "testPresets": [
+    {
+      "name": "debug-make",
+      "configurePreset": "debug-make"
+    },
+    {
+      "name": "debug-ninja",
+      "configurePreset": "debug-ninja"
+    },
+    {
+      "name": "release-make",
+      "configurePreset": "release-make"
+    },
+    {
+      "name": "release-ninja",
+      "configurePreset": "release-ninja"
+    }
+  ]
+}
